@@ -16,7 +16,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = "https://caio-machado.vercel.app";
+// Vercel injects the stable production domain at build time; fall back for local dev.
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
