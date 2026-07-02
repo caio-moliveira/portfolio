@@ -23,9 +23,7 @@ const MODELS = (
 
 const API_KEY = process.env.OPENROUTER_API_KEY || process.env.API_KEY;
 
-const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : "http://localhost:3000";
+const SITE_URL = "https://caiomachado-ai.com";
 
 async function callOpenRouter(payload: object, attempt = 0): Promise<Response> {
   const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
