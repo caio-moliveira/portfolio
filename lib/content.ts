@@ -168,7 +168,7 @@ export const experience: Experience[] = [
       { pt: "Workshops de Agent Harness e Agentes de IA, do conceito à produção.", en: "Agent Harness and AI Agents workshops, from concept to production." },
       { pt: "Mentoria de profissionais no uso diário de IA e na implementação em projetos reais.", en: "Mentoring professionals on daily AI use and implementation in real projects." },
     ],
-    tags: ["Python", "LangChain", "LangGraph", "LlamaIndex", "OpenAI", "Langfuse"],
+    tags: ["Python", "FastAPI", "SQL","Claude Code","HuggingFace","CrewAI","Qdrant","LangChain", "LangGraph", "LlamaIndex", "OpenAI", "Langfuse", "Antigravity", "ModelContextProtocol", "vLLM"],
   },
   {
     id: "quality",
