@@ -82,6 +82,28 @@ const vllm: TechIconData = {
   markup: `<path d="M0 4.973h9.324V23L0 4.973z" fill="#FDB515"></path><path d="M13.986 4.351L22.378 0l-6.216 23H9.324l4.662-18.649z" fill="#30A2FF"></path>`,
 };
 
+const claudecode: TechIconData = {
+  title: "Claude Code",
+  markup: `<path clip-rule="evenodd" fill-rule="evenodd" fill="#D97757" d="M20.998 10.949H24v3.102h-3v3.028h-1.487V20H18v-2.921h-1.487V20H15v-2.921H9V20H7.488v-2.921H6V20H4.487v-2.921H3V14.05H0V10.95h3V5h17.998v5.949zM6 10.949h1.488V8.102H6v2.847zm10.51 0H18V8.102h-1.49v2.847z"></path>`,
+};
+
+// CrewAI's base shape is near-black; recolored to the brand red so it reads on dark.
+const crewai: TechIconData = {
+  title: "CrewAI",
+  markup: `<path d="M19.41 10.783a2.753 2.753 0 012.471 1.355c.483.806.622 1.772.385 2.68l-.136.522a9.994 9.994 0 01-3.156 5.058c-.605.517-1.283 1.062-2.083 1.524l-.028.017c-.402.232-.884.511-1.398.756-1.19.602-2.475.997-3.798 1.167-.854.111-1.716.155-2.577.132H9.072a8.588 8.588 0 01-5.046-1.87l-.012-.01-.012-.01A8.024 8.024 0 011.22 17.42a10.916 10.916 0 01-.102-3.779A15.622 15.622 0 012.88 8.4a21.758 21.758 0 012.432-3.678 15.44 15.44 0 013.56-3.182A9.958 9.958 0 0112.44.104h.004l.003-.002c2.057-.384 3.743.374 5.024 1.26a8.28 8.28 0 012.395 2.513l.024.04.023.042a5.474 5.474 0 01.508 4.012c-.239.97-.577 1.914-1.01 2.814z" fill="#FF5A50"></path><path d="M18.861 13.165a.748.748 0 011.256.031c.199.332.256.73.159 1.103l-.137.522a7.936 7.936 0 01-2.504 4.014c-.572.49-1.138.939-1.774 1.306-.427.247-.857.496-1.303.707a9.628 9.628 0 01-3.155.973 14.33 14.33 0 01-2.257.116 6.531 6.531 0 01-3.837-1.422 5.967 5.967 0 01-2.071-3.494 8.859 8.859 0 01-.085-3.08 13.56 13.56 0 011.54-4.568 19.701 19.701 0 012.212-3.348 13.382 13.382 0 013.088-2.76 7.9 7.9 0 012.832-1.14c1.307-.245 2.434.207 3.481.933a6.222 6.222 0 011.806 1.892c.423.767.536 1.668.314 2.515a12.394 12.394 0 01-.99 2.67l-.223.497c-.321.713-.642 1.426-.97 2.137a.762.762 0 01-.97.467 3.39 3.39 0 01-2.283-2.49c-.095-.83.04-1.669.39-2.426.288-.746.61-1.477.933-2.208l.248-.563a.53.53 0 00-.204-.742 2.35 2.35 0 00-1.2.702 25.291 25.291 0 00-1.614 1.767 21.561 21.561 0 00-2.619 4.184 7.59 7.59 0 00-.816 2.753 7.042 7.042 0 00.07 2.219 2.055 2.055 0 001.934 1.715c1.801.1 3.59-.363 5.116-1.328.582-.4 1.141-.831 1.675-1.294.752-.71 1.376-1.519 1.958-2.36z" fill="#fff"></path>`,
+};
+
+// ModelContextProtocol ships only a monochrome mark; rendered in light ink for dark.
+const mcp: TechIconData = {
+  title: "ModelContextProtocol",
+  markup: `<g fill="#e8eef9" fill-rule="evenodd"><path d="M15.688 2.343a2.588 2.588 0 00-3.61 0l-9.626 9.44a.863.863 0 01-1.203 0 .823.823 0 010-1.18l9.626-9.44a4.313 4.313 0 016.016 0 4.116 4.116 0 011.204 3.54 4.3 4.3 0 013.609 1.18l.05.05a4.115 4.115 0 010 5.9l-8.706 8.537a.274.274 0 000 .393l1.788 1.754a.823.823 0 010 1.18.863.863 0 01-1.203 0l-1.788-1.753a1.92 1.92 0 010-2.754l8.706-8.538a2.47 2.47 0 000-3.54l-.05-.049a2.588 2.588 0 00-3.607-.003l-7.172 7.034-.002.002-.098.097a.863.863 0 01-1.204 0 .823.823 0 010-1.18l7.273-7.133a2.47 2.47 0 00-.003-3.537z"></path><path d="M14.485 4.703a.823.823 0 000-1.18.863.863 0 00-1.204 0l-7.119 6.982a4.115 4.115 0 000 5.9 4.314 4.314 0 006.016 0l7.12-6.982a.823.823 0 000-1.18.863.863 0 00-1.204 0l-7.119 6.982a2.588 2.588 0 01-3.61 0 2.47 2.47 0 010-3.54l7.12-6.982z"></path></g>`,
+};
+
+const antigravity: TechIconData = {
+  title: "Antigravity",
+  markup: `<mask height="23" id="ag-mask" maskUnits="userSpaceOnUse" width="24" x="0" y="1"><path d="M21.751 22.607c1.34 1.005 3.35.335 1.508-1.508C17.73 15.74 18.904 1 12.037 1 5.17 1 6.342 15.74.815 21.1c-2.01 2.009.167 2.511 1.507 1.506 5.192-3.517 4.857-9.714 9.715-9.714 4.857 0 4.522 6.197 9.714 9.715z" fill="#fff"></path></mask><g mask="url(#ag-mask)"><g filter="url(#ag-1)"><path d="M-1.018-3.992c-.408 3.591 2.686 6.89 6.91 7.37 4.225.48 7.98-2.043 8.387-5.633.408-3.59-2.686-6.89-6.91-7.37-4.225-.479-7.98 2.043-8.387 5.633z" fill="#FFE432"></path></g><g filter="url(#ag-2)"><path d="M15.269 7.747c1.058 4.557 5.691 7.374 10.348 6.293 4.657-1.082 7.575-5.653 6.516-10.21-1.058-4.556-5.691-7.374-10.348-6.292-4.657 1.082-7.575 5.653-6.516 10.21z" fill="#FC413D"></path></g><g filter="url(#ag-3)"><path d="M-12.443 10.804c1.338 4.703 7.36 7.11 13.453 5.378 6.092-1.733 9.947-6.95 8.61-11.652C8.282-.173 2.26-2.58-3.833-.848-9.925.884-13.78 6.1-12.443 10.804z" fill="#00B95C"></path></g><g filter="url(#ag-5)"><path d="M-7.608 14.703c3.352 3.424 9.126 3.208 12.896-.483 3.77-3.69 4.108-9.459.756-12.883C2.69-2.087-3.083-1.871-6.853 1.82c-3.77 3.69-4.108 9.458-.755 12.883z" fill="#00B95C"></path></g><g filter="url(#ag-6)"><path d="M9.932 27.617c1.04 4.482 5.384 7.303 9.7 6.3 4.316-1.002 6.971-5.448 5.93-9.93-1.04-4.483-5.384-7.304-9.7-6.301-4.316 1.002-6.971 5.448-5.93 9.93z" fill="#3186FF"></path></g><g filter="url(#ag-7)"><path d="M2.572-8.185C.392-3.329 2.778 2.472 7.9 4.771c5.122 2.3 11.042.227 13.222-4.63 2.18-4.855-.205-10.656-5.327-12.955-5.122-2.3-11.042-.227-13.222 4.63z" fill="#FBBC04"></path></g><g filter="url(#ag-9)"><path d="M28.71 17.471c-1.413 1.649-5.1.808-8.236-1.878-3.135-2.687-4.531-6.201-3.118-7.85 1.412-1.649 5.1-.808 8.235 1.878s4.532 6.2 3.119 7.85z" fill="#749BFF"></path></g><g filter="url(#ag-11)"><path d="M-.915 2.684c-1.44 3.473-.97 6.967 1.05 7.804 2.02.837 4.824-1.3 6.264-4.772 1.44-3.473.97-6.967-1.05-7.804-2.02-.837-4.824 1.3-6.264 4.772z" fill="#FFEE48"></path></g></g><defs><filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="17.587" id="ag-1" width="19.838" x="-3.288" y="-11.917"><feGaussianBlur stdDeviation="1.117"></feGaussianBlur></filter><filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="38.565" id="ag-2" width="38.9" x="4.251" y="-13.493"><feGaussianBlur stdDeviation="5.4"></feGaussianBlur></filter><filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="36.517" id="ag-3" width="40.955" x="-21.889" y="-10.592"><feGaussianBlur stdDeviation="4.591"></feGaussianBlur></filter><filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="36.595" id="ag-5" width="36.632" x="-19.099" y="-10.278"><feGaussianBlur stdDeviation="4.591"></feGaussianBlur></filter><filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="34.087" id="ag-6" width="33.533" x=".981" y="8.758"><feGaussianBlur stdDeviation="4.363"></feGaussianBlur></filter><filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="35.276" id="ag-7" width="35.978" x="-6.143" y="-21.659"><feGaussianBlur stdDeviation="3.954"></feGaussianBlur></filter><filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="24.054" id="ag-9" width="25.094" x="10.485" y=".58"><feGaussianBlur stdDeviation="3.159"></feGaussianBlur></filter><filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="26.151" id="ag-11" width="22.194" x="-8.355" y="-8.876"><feGaussianBlur stdDeviation="3.303"></feGaussianBlur></filter></defs>`,
+};
+
 // Normalized tech name -> icon data. Covers the aliases used across the site.
 const registry: Record<string, TechIconData> = {
   python: siPython,
@@ -93,11 +115,16 @@ const registry: Record<string, TechIconData> = {
   langfuse: langfuse,
   llamaindex: llamaindex,
   vllm: vllm,
+  claudecode: claudecode,
+  "claude code": claudecode,
+  crewai: crewai,
+  antigravity: antigravity,
   qdrant: siQdrant,
   azure: azure,
   "microsoft azure": azure,
   anthropic: siAnthropic,
-  mcp: siAnthropic,
+  mcp: mcp,
+  modelcontextprotocol: mcp,
   openai: openai,
   "openai embeddings": openai,
   "hugging face": siHuggingface,
@@ -184,4 +211,9 @@ export const marqueeTech: string[] = [
   "TypeScript",
   "Streamlit",
   "Vercel",
+  "vLLM",
+  "Claude Code",
+  "CrewAI",
+  "Antigravity", 
+  "ModelContextProtocol"
 ];

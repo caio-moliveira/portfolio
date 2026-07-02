@@ -149,7 +149,7 @@ export const experience: Experience[] = [
       { pt: "Criei workflows de IA que fazem a primeira análise de documentos de auditoria, elevando a qualidade e a velocidade da revisão.", en: "Built AI workflows that run first-pass analysis of audit documents, raising review quality and speed." },
       { pt: "Ensino Letramento em IA aos servidores, ajudando as pessoas a usarem IA com autonomia e segurança.", en: "I teach AI Literacy to public servants, helping people use AI with autonomy and confidence." },
     ],
-    tags: ["Python", "FastAPI", "LangGraph", "LlamaIndex", "Qdrant", "OpenAI", "Docker", "Azure"],
+    tags: ["Python", "FastAPI", "LangGraph", "LlamaIndex", "Qdrant", "OpenAI", "Docker", "Azure", "Langfuse", "OCR", "RAG", "Agentes de IA"],
   },
   {
     id: "jornada",
@@ -168,7 +168,7 @@ export const experience: Experience[] = [
       { pt: "Workshops de Agent Harness e Agentes de IA, do conceito à produção.", en: "Agent Harness and AI Agents workshops, from concept to production." },
       { pt: "Mentoria de profissionais no uso diário de IA e na implementação em projetos reais.", en: "Mentoring professionals on daily AI use and implementation in real projects." },
     ],
-    tags: ["Python", "FastAPI", "SQL","Claude Code","HuggingFace","CrewAI","Qdrant","LangChain", "LangGraph", "LlamaIndex", "OpenAI", "Langfuse", "Antigravity", "ModelContextProtocol", "vLLM"],
+    tags: ["Python", "FastAPI", "SQL","Claude Code","HuggingFace","CrewAI","Qdrant","LangChain", "LangGraph", "LlamaIndex", "OpenAI", "Langfuse", "Antigravity", "ModelContextProtocol", "vLLM", "Streamlit"],
   },
   {
     id: "quality",
@@ -186,7 +186,7 @@ export const experience: Experience[] = [
       { pt: "Automatizei a análise de notas fiscais com OCR e NLP, reduzindo o processamento de mais de 300 documentos de 7 dias para meio dia.", en: "Automated tax-note analysis with OCR and NLP, cutting processing of 300+ documents from 7 days to half a day." },
       { pt: "Pipelines em Python, SQL e Docker para produtos de dados prontos para IA.", en: "Pipelines in Python, SQL and Docker for AI-ready data products." },
     ],
-    tags: ["Python", "SQL", "Docker", "OCR", "RAG"],
+    tags: ["Python", "SQL", "Docker", "FastAPI", "RAG", "Streamlit", "OpenAI"],
   },
   {
     id: "cct",
@@ -237,7 +237,7 @@ export const curatedProjects: Project[] = [
       en: "Before, there weren't enough auditors to review every document. Now AI processes 100% of the filings and points exactly where the team should focus. It was the first time all 853 municipalities had full coverage.",
     },
     metric: { pt: "853 municípios · cobertura total", en: "853 municipalities · full coverage" },
-    tags: ["Python", "LangGraph", "OpenAI", "Qdrant", "Auditoria"],
+    tags: ["Python", "LangGraph", "OpenAI", "Langchain", "React", "Oracle", "FastAPI", "OCR"],
     accent: "blue",
   },
   {
@@ -251,7 +251,7 @@ export const curatedProjects: Project[] = [
       pt: "Suíte de agentes para análise técnica profunda, compreensão de documentos com prompts personalizados e assistentes conversacionais especializados em auditoria.",
       en: "A suite of agents for deep technical analysis, document understanding with tailored prompts, and conversational assistants specialized in auditing.",
     },
-    tags: ["Python", "LangGraph", "Langfuse", "OpenAI", "Multi-agente"],
+    tags: ["Python", "FastAPI","LangGraph", "Langfuse", "OpenAI", "Multi-agente"],
     accent: "cyan",
   },
   {
@@ -266,7 +266,7 @@ export const curatedProjects: Project[] = [
       en: "Chatbot with automatic routing: the 'Auto' collection detects intent and sends each question to the right base, whether decisions, case law or internal rules, answering in natural language over 500,000+ documents.",
     },
     metric: { pt: "500k+ documentos", en: "500k+ documents" },
-    tags: ["Python", "FastAPI", "LlamaIndex", "Qdrant", "React", "OpenAI"],
+    tags: ["Python", "FastAPI", "LlamaIndex", "Qdrant", "OpenAI", "Langgraph", "Langchain", "Langfuse"],
     accent: "blue",
   },
   {
@@ -295,7 +295,7 @@ export const curatedProjects: Project[] = [
       en: "A module to assist the analysis of public-tender notices, cutting work that took 5+ days down to a few minutes.",
     },
     metric: { pt: "5+ dias → minutos", en: "5+ days → minutes" },
-    tags: ["Python", "OpenAI", "LangGraph", "NLP"],
+    tags: ["Python", "FastAPI", "OpenAI", "LangGraph", "CAG"],
     accent: "cyan",
   },
   {
@@ -309,7 +309,7 @@ export const curatedProjects: Project[] = [
       pt: "Assistente de onboarding com vector search, embeddings OpenAI e LangChain para responder perguntas de funcionários a partir da base interna.",
       en: "Onboarding assistant with vector search, OpenAI embeddings and LangChain to answer employee questions from the internal knowledge base.",
     },
-    tags: ["RAG", "LangChain", "Embeddings"],
+    tags: ["Python", "Streamlit", "FastAPI", "LangChain", "OpenAI", "RAG"],
     accent: "blue",
   },
 
@@ -325,7 +325,7 @@ export const curatedProjects: Project[] = [
       pt: "Evolução do ChatUAI com roteamento mais inteligente, melhor experiência conversacional e novas capacidades agênticas.",
       en: "Evolution of ChatUAI with smarter routing, a better conversational experience and new agentic capabilities.",
     },
-    tags: ["Python", "LangGraph", "Langfuse", "Qdrant", "React"],
+    tags: ["Python", "FastAPI", "LlamaIndex", "Qdrant", "React", "OpenAI", "Langgraph", "Langchain", "Langfuse"],
     accent: "cyan",
   },
   {
@@ -339,7 +339,7 @@ export const curatedProjects: Project[] = [
       pt: "Extensão da linha de análise de contas para o acompanhamento das prestações em exercício, com sinalização automática de pontos de atenção.",
       en: "Extends the account-analysis line to in-year accountability tracking, automatically flagging points of attention.",
     },
-    tags: ["Python", "LangGraph", "Oracle", "PostgreSQL"],
+    tags: ["Python", "LangGraph", "OpenAI", "Langchain", "React", "FastAPI", "Oracle", "PostgreSQL", "OCR"],
     accent: "blue",
   },
   {
