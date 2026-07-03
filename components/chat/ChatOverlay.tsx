@@ -29,10 +29,10 @@ const suggestions: Record<Lang, string[]> = {
   ],
   en: [
     "What are your main projects?",
-    "Which skills and tech do you master?",
+    "What skills and tech do you work with?",
     "How does your consulting work?",
     "Tell me about your work at TCEMG",
-    "Any content to help me learn AI?",
+    "Got any content to help me learn AI?",
   ],
 };
 

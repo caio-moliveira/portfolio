@@ -80,7 +80,7 @@ const dict = {
   "skills.title": { pt: "Skills & Stack", en: "Skills & Stack" },
   "skills.kicker": { pt: "Ferramentas do ofício", en: "Tools of the craft" },
 
-  "contact.title": { pt: "Vamos construir algo com IA?", en: "Let's build something with AI?" },
+  "contact.title": { pt: "Vamos construir algo com IA?", en: "Let's build something with AI." },
   "contact.subtitle": {
     pt: "Consultoria, palestras, aulas ou uma boa conversa técnica. Estou a um clique.",
     en: "Consulting, talks, teaching or a good technical conversation. I'm one click away.",

@@ -1,3 +1,4 @@
+import type { Lang } from "./utils";
 import {
   siPython,
   siTypescript,
@@ -187,6 +188,30 @@ const registry: Record<string, TechIconData> = {
 export function getTechIcon(name: string): TechIconData | null {
   const key = name.trim().toLowerCase();
   return registry[key] ?? null;
+}
+
+/**
+ * Tags and skills are shared, language-neutral chips (mostly tech names that
+ * read the same in both languages). A handful are plain Portuguese words that
+ * would leak into the English site, so we translate just those for `en`.
+ */
+const TAG_EN: Record<string, string> = {
+  "Agentes de IA": "AI Agents",
+  "Multi-agente": "Multi-agent",
+  "Produto de IA": "AI Product",
+  Consultoria: "Consulting",
+  "Letramento em IA": "AI Literacy",
+  "Estratégia de IA": "AI Strategy",
+  "Ensino & mentoria": "Teaching & mentoring",
+  Palestras: "Talks",
+  "Automação": "Automation",
+  Treinamento: "Training",
+  "Capacitação": "Enablement",
+};
+
+/** Localizes a tag/skill label. Tech names pass through unchanged. */
+export function localizeTag(name: string, lang: Lang): string {
+  return lang === "en" ? TAG_EN[name] ?? name : name;
 }
 
 /**

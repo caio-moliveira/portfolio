@@ -3,7 +3,6 @@
 import Image from "next/image";
 import {
   ExternalLink,
-  Star,
   CalendarDays,
   Mail,
   Play,
@@ -18,6 +17,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/BrandIcons";
+import { localizeTag } from "@/lib/tech";
 import type { ResolvedCard } from "@/lib/agent";
 import type { Lang } from "@/lib/utils";
 
@@ -65,7 +65,7 @@ function CardRenderer({ card, lang }: { card: ResolvedCard; lang: Lang }) {
                 <div className="mt-2 flex flex-wrap gap-1">
                   {p.tags.slice(0, 3).map((t) => (
                     <span key={t} className="rounded bg-white/5 px-1.5 py-0.5 text-[10px] text-muted">
-                      {t}
+                      {localizeTag(t, lang)}
                     </span>
                   ))}
                 </div>
@@ -92,7 +92,7 @@ function CardRenderer({ card, lang }: { card: ResolvedCard; lang: Lang }) {
                 <div className="flex flex-wrap gap-1.5">
                   {g.skills.map((s) => (
                     <span key={s} className="rounded-md bg-white/5 px-2 py-0.5 text-[11px] text-muted">
-                      {s}
+                      {localizeTag(s, lang)}
                     </span>
                   ))}
                 </div>

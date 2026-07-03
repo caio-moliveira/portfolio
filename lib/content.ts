@@ -156,7 +156,7 @@ export const experience: Experience[] = [
     id: "jornada",
     company: "Jornada de Dados",
     logo: "/brand/companies/jornada.jpg",
-    role: { pt: "Professor de Engenharia de IA", en: "AI Engineer Teacher" },
+    role: { pt: "Professor de Engenharia de IA", en: "AI Engineering Instructor" },
     period: { pt: "Desde Fev 2025", en: "Since Feb 2025" },
     current: true,
     location: { pt: "Educação / EdTech", en: "Education / EdTech" },
@@ -180,7 +180,7 @@ export const experience: Experience[] = [
     location: { pt: "Produtos de dados", en: "Data products" },
     summary: {
       pt: "Construí pipelines de dados e componentes de API e banco, além de soluções de IA aplicadas ao negócio.",
-      en: "I built data pipelines and API and database components, plus AI solutions applied to the business.",
+      en: "I built data pipelines, API and database components, and AI solutions applied to the business.",
     },
     highlights: [
       { pt: "Desenvolvi um assistente de onboarding com RAG (vector search, embeddings e LangChain) que responde dúvidas a partir da base interna.", en: "Developed an onboarding assistant with RAG (vector search, embeddings and LangChain) that answers questions from the internal knowledge base." },
@@ -232,7 +232,7 @@ export const curatedProjects: Project[] = [
     category: "professional",
     org: "TCEMG",
     status: "delivered",
-    summary: { pt: "100% das contas dos 853 municípios de MG analisadas por IA.", en: "100% of the accounts of MG's 853 municipalities analyzed by AI." },
+    summary: { pt: "100% das contas dos 853 municípios de MG analisadas por IA.", en: "All 853 municipalities in Minas Gerais, with accounts 100% analyzed by AI." },
     description: {
       pt: "Antes, faltavam auditores para revisar todos os documentos. Hoje a IA processa 100% das prestações e aponta exatamente onde a equipe deve focar. Foi a primeira vez que os 853 municípios tiveram cobertura total.",
       en: "Before, there weren't enough auditors to review every document. Now AI processes 100% of the filings and points exactly where the team should focus. It was the first time all 853 municipalities had full coverage.",
@@ -247,7 +247,7 @@ export const curatedProjects: Project[] = [
     category: "professional",
     org: "TCEMG",
     status: "delivered",
-    summary: { pt: "Agentes de IA dedicados a tarefas distintas de auditoria.", en: "AI agents dedicated to distinct auditing tasks." },
+    summary: { pt: "Agentes de IA dedicados a tarefas distintas de auditoria.", en: "AI agents, each dedicated to a specific auditing task." },
     description: {
       pt: "Suíte de agentes para análise técnica profunda, compreensão de documentos com prompts personalizados e assistentes conversacionais especializados em auditoria.",
       en: "A suite of agents for deep technical analysis, document understanding with tailored prompts, and conversational assistants specialized in auditing.",
@@ -279,7 +279,7 @@ export const curatedProjects: Project[] = [
     summary: { pt: "OCR multimodal on-premise, sem enviar dados sensíveis para fora.", en: "On-premise multimodal OCR, keeping sensitive data in-house." },
     description: {
       pt: "OCR multimodal rodando em cluster NVIDIA L40S on-premise, sem envio de dados sensíveis. Orquestração via Celery + pool de workers vLLM para alto throughput.",
-      en: "Multimodal OCR running on an on-premise NVIDIA L40S cluster, with no sensitive data leaving the building. Orchestrated via Celery + a vLLM worker pool for high throughput.",
+      en: "Multimodal OCR running on an on-premise NVIDIA L40S cluster, so no sensitive data ever leaves our own infrastructure. Orchestrated with Celery and a vLLM worker pool for high throughput.",
     },
     tags: ["Python", "Docker", "vLLM", "Celery", "NVIDIA L40S"],
     accent: "violet",
@@ -338,7 +338,7 @@ export const curatedProjects: Project[] = [
     summary: { pt: "Análise por IA das contas em exercício.", en: "AI analysis of in-year accounts." },
     description: {
       pt: "Extensão da linha de análise de contas para o acompanhamento das prestações em exercício, com sinalização automática de pontos de atenção.",
-      en: "Extends the account-analysis line to in-year accountability tracking, automatically flagging points of attention.",
+      en: "Extends the account-analysis work to in-year filings, automatically flagging anything that needs a closer look.",
     },
     tags: ["Python", "LangGraph", "OpenAI", "Langchain", "React", "FastAPI", "Oracle", "OCR", "CAG"],
     accent: "blue",
@@ -364,10 +364,10 @@ export const curatedProjects: Project[] = [
     name: "NEGOTI",
     category: "consulting",
     logo: "/brand/companies/negoti.svg",
-    summary: { pt: "Consultoria e apresentação de solução de IA.", en: "AI solution consulting and presentation." },
+    summary: { pt: "Consultoria e apresentação de solução de IA.", en: "AI consulting and a solution pitch." },
     description: {
       pt: "Consultoria em IA para a NEGOTI, com desenvolvimento e apresentação de uma solução aplicada ao negócio.",
-      en: "AI consulting for NEGOTI, including development and presentation of a business-applied solution.",
+      en: "AI consulting for NEGOTI: I built and pitched a solution tailored to their business.",
     },
     url: "https://negoti-apresentacao.vercel.app/",
     tags: ["OpenAI", "Produto de IA", "Consultoria"],
@@ -600,7 +600,7 @@ export const teaching = {
   title: { pt: "Letramento em IA", en: "AI Literacy" } as Bi,
   desc: {
     pt: "Ministro cursos de Letramento em IA para equipes e instituições, ensinando as pessoas a entender e usar IA no dia a dia com autonomia, segurança e senso crítico. É a tecnologia deixando de ser abstrata e virando ferramenta prática de todo mundo.",
-    en: "I deliver AI Literacy courses for teams and institutions, teaching people to understand and use AI day to day with autonomy, safety and critical thinking. It's technology moving from abstract to a practical tool for everyone.",
+    en: "I deliver AI Literacy courses for teams and institutions, teaching people to understand and use AI in their everyday work with confidence, safety and a critical eye. It's technology going from something abstract to a practical, everyday tool for everyone.",
   } as Bi,
 };
 
@@ -678,7 +678,7 @@ export const literacyTerms: LiteracyTerm[] = [
 export const consultingOffer = {
   intro: {
     pt: "Ajudo empresas e times a saírem da teoria e colocarem IA para trabalhar: construo agentes e RAG em produção, capacito times de desenvolvimento a programar com IA e treino equipes a usar IA no dia a dia e em automações.",
-    en: "I help companies and teams move from theory to putting AI to work: I build agents and RAG in production, enable development teams to code with AI, and train teams to use AI day to day and in automations.",
+    en: "I help companies and teams move from theory to putting AI to work: I build agents and RAG in production, get development teams coding with AI, and train people to use AI in their day-to-day and in automations.",
   } as Bi,
   services: [
     {
@@ -703,7 +703,7 @@ export const consultingOffer = {
       title: { pt: "IA no dia a dia & automações", en: "Everyday AI & automations" },
       desc: {
         pt: "Treino equipes não técnicas a usar ChatGPT, Claude, Gemini e Copilot com autonomia e a automatizar tarefas repetitivas do dia a dia.",
-        en: "I train non-technical teams to use ChatGPT, Claude, Gemini and Copilot with autonomy and to automate repetitive daily tasks.",
+        en: "I train non-technical teams to use ChatGPT, Claude, Gemini and Copilot confidently, and to automate repetitive daily tasks.",
       },
       icon: "Sparkles",
       tags: ["ChatGPT", "Claude", "Gemini", "Automação"],
@@ -712,7 +712,7 @@ export const consultingOffer = {
       title: { pt: "Estratégia & Letramento em IA", en: "Strategy & AI Literacy" },
       desc: {
         pt: "Diagnóstico, roadmap de IA e Letramento para a organização adotar IA com estratégia, segurança e senso crítico.",
-        en: "Assessment, AI roadmap and AI Literacy so the organization adopts AI with strategy, safety and critical thinking.",
+        en: "Assessment, an AI roadmap and AI Literacy, so your organization adopts AI with a clear strategy, safely and thoughtfully.",
       },
       icon: "Compass",
       tags: ["Estratégia de IA", "Letramento em IA", "Discovery"],
