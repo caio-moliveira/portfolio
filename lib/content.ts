@@ -35,7 +35,7 @@ export const profile = {
   } as Bi,
   photo: "/brand/foto-perfil.png",
   photoPro: "/brand/caio.jpg",
-  photoCutout: "/brand/caio-cutout.png",
+  photoCutout: "/brand/caio.png",
   logo: "/brand/logo-caio.png",
   logoSquare: "/brand/logo.png",
   heroBg: "/brand/logo.png",

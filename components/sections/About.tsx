@@ -21,9 +21,12 @@ export function About() {
 
   return (
     <section id="top" className="relative overflow-hidden pb-24 pt-28 md:pt-36">
+      {/* Sky glow: bridges the white logo into the dark background through a light
+          blue, spreading wide so it reaches the top corners of the screen */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[90vh] bg-[radial-gradient(ellipse_105%_75%_at_50%_20%,rgba(120,178,255,0.34)_0%,rgba(63,140,247,0.20)_30%,rgba(46,110,220,0.09)_52%,transparent_78%)]" />
       {/* Centered brand logo watermark: parallax + soft fade into the dark */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 flex h-[82vh] items-center justify-center">
-        <motion.div style={{ y: logoY }} className="relative w-full max-w-4xl px-6">
+        <motion.div style={{ y: logoY }} className="relative w-full max-w-5xl px-6">
           <Image
             src={profile.heroBg}
             alt=""
@@ -107,30 +110,54 @@ export function About() {
           })}
         </div>
 
-        {/* Manifesto */}
+        {/* Manifesto — how I think, with a portrait alongside */}
         <Reveal className="mt-24">
-          <div id="about" className="mx-auto max-w-4xl scroll-mt-28 text-center">
-            <div className="mb-5 flex items-center justify-center gap-3">
-              <span className="h-px w-8 bg-gradient-to-r from-transparent to-brand" />
-              <span className="font-display text-sm font-medium uppercase tracking-[0.2em] text-brand-bright">
-                {manifesto.kicker[lang]}
-              </span>
-              <span className="h-px w-8 bg-gradient-to-l from-transparent to-brand" />
-            </div>
-            <h2 className="font-display text-3xl font-bold leading-tight text-balance sm:text-4xl lg:text-[2.7rem]">
-              <span className="text-ink">{manifesto.headlineLead[lang]}</span>{" "}
-              <span className="gradient-text">{manifesto.headlineEmphasis[lang]}</span>
-            </h2>
-            <div className="mx-auto mt-7 max-w-2xl space-y-4">
-              {manifesto.body.map((p, i) => (
-                <p key={i} className="text-lg leading-relaxed text-muted">
-                  {p[lang]}
-                </p>
-              ))}
-            </div>
-            <div className="mt-8 flex items-center justify-center gap-3">
-              <span className="h-px w-10 bg-brand/50" />
-              <span className="font-display text-sm font-semibold text-ink">{manifesto.signature[lang]}</span>
+          <div id="about" className="mx-auto max-w-5xl scroll-mt-28">
+            <div className="grid items-center gap-10 lg:grid-cols-[auto_1fr] lg:gap-14">
+              {/* Portrait: circular avatar with a brand gradient ring (kept ~220px so the 400px source stays crisp) */}
+              <div className="relative mx-auto w-[200px] shrink-0 sm:w-[220px] lg:mx-0">
+                {/* soft brand glow behind the avatar */}
+                <div className="pointer-events-none absolute -inset-3 rounded-full bg-gradient-to-br from-brand/30 via-cyan/15 to-transparent blur-2xl" />
+                {/* gradient ring */}
+                <div className="relative rounded-full bg-gradient-to-br from-brand via-brand-bright to-cyan p-[3px] shadow-glow">
+                  {/* inner circle: subtle disc so the cutout's transparent areas read intentionally */}
+                  <div className="overflow-hidden rounded-full bg-gradient-to-b from-brand/15 to-white/[0.03]">
+                    <Image
+                      src={profile.photoCutout}
+                      alt={profile.name}
+                      width={400}
+                      height={400}
+                      className="aspect-square w-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Text */}
+              <div className="text-center lg:text-left">
+                <div className="mb-5 flex items-center justify-center gap-3 lg:justify-start">
+                  <span className="h-px w-8 bg-gradient-to-r from-transparent to-brand" />
+                  <span className="font-display text-sm font-medium uppercase tracking-[0.2em] text-brand-bright">
+                    {manifesto.kicker[lang]}
+                  </span>
+                  <span className="h-px w-8 bg-gradient-to-l from-transparent to-brand lg:hidden" />
+                </div>
+                <h2 className="font-display text-3xl font-bold leading-tight text-balance sm:text-4xl lg:text-[2.5rem]">
+                  <span className="text-ink">{manifesto.headlineLead[lang]}</span>{" "}
+                  <span className="gradient-text">{manifesto.headlineEmphasis[lang]}</span>
+                </h2>
+                <div className="mx-auto mt-7 max-w-2xl space-y-4 lg:mx-0">
+                  {manifesto.body.map((p, i) => (
+                    <p key={i} className="text-lg leading-relaxed text-muted">
+                      {p[lang]}
+                    </p>
+                  ))}
+                </div>
+                <div className="mt-8 flex items-center justify-center gap-3 lg:justify-start">
+                  <span className="h-px w-10 bg-brand/50" />
+                  <span className="font-display text-sm font-semibold text-ink">{manifesto.signature[lang]}</span>
+                </div>
+              </div>
             </div>
           </div>
         </Reveal>

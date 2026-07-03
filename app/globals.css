@@ -173,8 +173,8 @@ body {
   mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
 }
 .logo-feather {
-  -webkit-mask-image: radial-gradient(ellipse 82% 64% at 50% 50%, #000 34%, rgba(0, 0, 0, 0.4) 58%, transparent 86%);
-  mask-image: radial-gradient(ellipse 82% 64% at 50% 50%, #000 34%, rgba(0, 0, 0, 0.4) 58%, transparent 86%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 62% at 50% 50%, #000 14%, rgba(0, 0, 0, 0.5) 44%, transparent 84%);
+  mask-image: radial-gradient(ellipse 80% 62% at 50% 50%, #000 14%, rgba(0, 0, 0, 0.5) 44%, transparent 84%);
 }
 
 @media (prefers-reduced-motion: reduce) {
