@@ -743,11 +743,14 @@ export function buildKnowledgeContext(lang: Lang): string {
 
   lines.push(`\n## Projects (professional, in-development, consulting)`);
   curatedProjects.forEach((p) => {
-    lines.push(`- [${p.category}${p.org ? " · " + p.org : ""}] ${p.name}: ${L(p.description)}${p.metric ? " (" + L(p.metric) + ")" : ""}`);
+    const status = p.status === "in_progress" ? " [working on now]" : p.status === "delivered" ? " [delivered]" : "";
+    lines.push(
+      `- [${p.category}${p.org ? " · " + p.org : ""}]${status} ${p.name}: ${L(p.description)}${p.metric ? " (" + L(p.metric) + ")" : ""} | tech: ${p.tags.join(", ")}`
+    );
   });
 
   lines.push(`\n## Featured personal projects (GitHub @${socials.githubUser})`);
-  featuredRepos.forEach((r) => lines.push(`- ${r.repo}: ${L(r.label)}`));
+  featuredRepos.forEach((r) => lines.push(`- ${r.repo}: ${L(r.desc)} | tech: ${r.tags.join(", ")}`));
 
   lines.push(`\n## Skills`);
   skillGroups.forEach((g) => lines.push(`- ${L(g.title)}: ${g.skills.join(", ")}`));

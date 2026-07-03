@@ -7,6 +7,7 @@ import { X, Send, Sparkles, ArrowUp } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { useChat } from "./ChatProvider";
 import { ChatCards } from "./ChatCards";
+import { ChatMarkdown } from "./ChatMarkdown";
 import { profile } from "@/lib/content";
 import type { ResolvedCard } from "@/lib/agent";
 import type { Lang } from "@/lib/utils";
@@ -278,8 +279,8 @@ function MessageBubble({ message, lang }: { message: Message; lang: Lang }) {
         className="mt-0.5 h-8 w-8 shrink-0 rounded-full object-cover ring-1 ring-brand-bright/30"
       />
       <div className="min-w-0 flex-1">
-        <div className="glass w-fit max-w-[92%] rounded-2xl rounded-tl-sm px-4 py-2.5 text-sm leading-relaxed text-ink">
-          {message.content}
+        <div className="glass max-w-[92%] rounded-2xl rounded-tl-sm px-4 py-2.5 text-sm leading-relaxed text-ink">
+          <ChatMarkdown content={message.content} />
         </div>
         {message.cards && message.cards.length > 0 && <ChatCards cards={message.cards} lang={lang} />}
       </div>

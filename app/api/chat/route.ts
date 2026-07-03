@@ -44,25 +44,70 @@ async function callOpenRouter(payload: object, attempt = 0): Promise<Response> {
   return res;
 }
 
+// Keep the reply readable and markdown-friendly: preserve intentional line
+// breaks (lists/paragraphs), collapse only stray runs of spaces.
+function normalizeReply(s: string): string {
+  return s
+    .replace(/\r\n/g, "\n")
+    .replace(/\\n/g, "\n") // some models double-escape newlines
+    .replace(/[ \t]+\n/g, "\n") // trim trailing spaces per line
+    .replace(/[ \t]{2,}/g, " ") // collapse runs of spaces/tabs
+    .replace(/\n{3,}/g, "\n\n") // cap blank lines
+    .trim();
+}
+
+function coerceCards(value: unknown): CardSpec[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .filter((c: unknown) => c && typeof (c as CardSpec).type === "string")
+    .map((c) => ({ type: (c as CardSpec).type, query: (c as CardSpec).query }));
+}
+
+function unescapeJsonString(s: string): string {
+  return s
+    .replace(/\\"/g, '"')
+    .replace(/\\\\/g, "\\")
+    .replace(/\\n/g, "\n")
+    .replace(/\\t/g, "\t")
+    .replace(/\\r/g, "");
+}
+
 function parseModelJson(raw: string): { reply: string; cards: CardSpec[] } | null {
   if (!raw) return null;
-  let text = raw.trim();
-  // Strip code fences if the model wrapped the JSON.
-  text = text.replace(/^```(?:json)?/i, "").replace(/```$/i, "").trim();
-  // Grab the outermost JSON object.
+  const text = raw
+    .trim()
+    .replace(/^```(?:json)?/i, "")
+    .replace(/```$/i, "")
+    .trim();
   const start = text.indexOf("{");
   const end = text.lastIndexOf("}");
   if (start === -1 || end === -1) return null;
+  const slice = text.slice(start, end + 1);
+
+  // 1) Strict parse (the happy path).
   try {
-    const obj = JSON.parse(text.slice(start, end + 1));
-    if (typeof obj.reply !== "string") return null;
-    // Some models over-escape newlines; normalize stray literal "\n" and whitespace.
-    const reply = obj.reply.replace(/\\n/g, " ").replace(/[ \t]+/g, " ").trim();
-    const cards = Array.isArray(obj.cards) ? obj.cards.filter((c: unknown) => c && typeof (c as CardSpec).type === "string") : [];
-    return { reply, cards };
+    const obj = JSON.parse(slice);
+    if (typeof obj.reply === "string") return { reply: normalizeReply(obj.reply), cards: coerceCards(obj.cards) };
   } catch {
-    return null;
+    /* fall through to lenient extraction */
   }
+
+  // 2) Lenient extraction — robust to raw newlines inside the "reply" string,
+  //    which smaller models often emit and which break JSON.parse.
+  const replyMatch = /"reply"\s*:\s*"((?:[^"\\]|\\.)*)"/.exec(slice);
+  if (!replyMatch) return null;
+  const reply = normalizeReply(unescapeJsonString(replyMatch[1]));
+  if (!reply) return null;
+  let cards: CardSpec[] = [];
+  const cardsMatch = /"cards"\s*:\s*(\[[\s\S]*?\])/.exec(slice);
+  if (cardsMatch) {
+    try {
+      cards = coerceCards(JSON.parse(cardsMatch[1]));
+    } catch {
+      cards = [];
+    }
+  }
+  return { reply, cards };
 }
 
 export async function POST(req: Request) {
@@ -79,8 +124,8 @@ export async function POST(req: Request) {
         {
           reply:
             lang === "pt"
-              ? "A IA ainda não está configurada (falta a API key do OpenRouter). Mas posso te contar: sou o Caio, engenheiro de IA — explore as seções ou fale comigo pelo LinkedIn!"
-              : "The AI isn't configured yet (missing the OpenRouter API key). But here's the gist: I'm Caio, an AI engineer — explore the sections or reach me on LinkedIn!",
+              ? "A IA ainda não está configurada (falta a API key do OpenRouter). Mas posso te contar: sou o Caio, engenheiro de IA. Explore as seções ou fale comigo pelo LinkedIn!"
+              : "The AI isn't configured yet (missing the OpenRouter API key). But here's the gist: I'm Caio, an AI engineer. Explore the sections or reach me on LinkedIn!",
           cards: intentCards(lastUser, lang),
         },
         { status: 200 }
@@ -90,7 +135,7 @@ export async function POST(req: Request) {
     const payload = {
       models: MODELS.slice(0, 3),
       temperature: 0.6,
-      max_tokens: 700,
+      max_tokens: 800,
       messages: [
         { role: "system", content: systemPrompt(lang) },
         ...messages.map((m) => ({ role: m.role, content: m.content })),
@@ -115,12 +160,15 @@ export async function POST(req: Request) {
     if (parsed) {
       reply = parsed.reply;
       cards = resolveCards(parsed.cards, lang);
-      // If the model gave a good answer but forgot cards, backfill from intent.
+      // Reliability hedge: smaller models often write a great answer but forget
+      // the cards. Backfill from intent only when the question clearly warrants a
+      // card. Generic/personal questions match nothing, so they stay text-only.
       if (cards.length === 0) cards = intentCards(lastUser, lang);
     } else {
-      // Model didn't follow JSON format — use its raw text and infer cards.
+      // Model didn't follow JSON format — use its raw text and infer cards from
+      // both the question and the answer it wrote.
       reply = raw.trim() || (lang === "pt" ? "Desculpe, pode repetir?" : "Sorry, could you rephrase?");
-      cards = intentCards(lastUser, lang);
+      cards = intentCards(`${lastUser} ${reply}`, lang);
     }
 
     return NextResponse.json({ reply, cards });
