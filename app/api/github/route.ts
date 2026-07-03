@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
-import { socials } from "@/lib/content";
+import { socials, featuredRepos } from "@/lib/content";
 import type { Repo } from "@/lib/github";
+
+// Only these repos are exposed on the site (order is applied client-side).
+const ALLOWED_REPOS = new Set(featuredRepos.map((r) => r.repo));
 
 // Revalidate at most once per hour.
 export const revalidate = 3600;
@@ -16,6 +19,7 @@ type GhRepo = {
   fork: boolean;
   archived: boolean;
   updated_at: string;
+  pushed_at: string;
 };
 
 export async function GET() {
@@ -39,7 +43,7 @@ export async function GET() {
 
     const raw = (await res.json()) as GhRepo[];
     const repos: Repo[] = raw
-      .filter((r) => !r.fork && !r.archived)
+      .filter((r) => !r.fork && !r.archived && ALLOWED_REPOS.has(r.name))
       .map((r) => ({
         name: r.name,
         description: r.description,
@@ -49,8 +53,9 @@ export async function GET() {
         stars: r.stargazers_count,
         topics: r.topics ?? [],
         updatedAt: r.updated_at,
+        pushedAt: r.pushed_at,
       }))
-      .sort((a, b) => b.stars - a.stars || +new Date(b.updatedAt) - +new Date(a.updatedAt));
+      .sort((a, b) => b.stars - a.stars || +new Date(b.pushedAt) - +new Date(a.pushedAt));
 
     return NextResponse.json({ repos });
   } catch {

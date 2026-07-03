@@ -5,12 +5,10 @@ import { Mail, CalendarDays, FileText, Sparkles } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/BrandIcons";
 import { useLang } from "@/lib/i18n";
 import { Reveal } from "@/components/ui/Reveal";
-import { useChat } from "@/components/chat/ChatProvider";
 import { socials, profile } from "@/lib/content";
 
 export function Contact() {
-  const { t, lang } = useLang();
-  const { open } = useChat();
+  const { t } = useLang();
 
   const channels = [
     { icon: CalendarDays, label: t("cta.book"), href: socials.calendly, primary: true },
@@ -23,7 +21,19 @@ export function Contact() {
   return (
     <footer id="contact" className="relative overflow-hidden border-t border-line">
       <div className="aurora opacity-40" />
-      <div className="relative mx-auto max-w-5xl px-5 py-24 text-center sm:px-8">
+      {/* Brand logo watermark: feathered + faded into the dark, covering the whole footer */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <Image
+          src={profile.heroBg}
+          alt=""
+          fill
+          priority
+          className="logo-feather object-cover opacity-40"
+        />
+      </div>
+      {/* Soft center scrim so the copy stays legible over the logo */}
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_58%_46%_at_50%_50%,rgba(5,7,15,0.55),transparent_72%)]" />
+      <div className="relative z-10 mx-auto max-w-5xl px-5 py-24 text-center sm:px-8">
         <Reveal>
           <h2 className="font-display text-4xl font-bold tracking-tight text-balance sm:text-5xl">
             {t("contact.title")}
@@ -53,30 +63,7 @@ export function Contact() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.2}>
-          <button
-            onClick={() => open()}
-            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-bright transition-colors hover:text-cyan"
-          >
-            <Sparkles className="h-4 w-4" />
-            {lang === "pt" ? "ou converse com minha IA agora" : "or chat with my AI now"}
-          </button>
-        </Reveal>
-
-        {/* Brand plate — the real CAIO logo on its native light background */}
-        <Reveal delay={0.25}>
-          <div className="mx-auto mt-16 w-full max-w-md overflow-hidden rounded-2xl bg-white p-4 shadow-xl ring-1 ring-white/10">
-            <Image
-              src={profile.logo}
-              alt="Logo CAIO, Consultoria em Inteligência Artificial"
-              width={720}
-              height={240}
-              className="h-auto w-full object-contain"
-            />
-          </div>
-        </Reveal>
-
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-line pt-8 text-sm text-faint sm:flex-row">
+        <div className="mt-16 flex flex-col items-center justify-between gap-3 border-t border-line pt-8 text-sm text-faint sm:flex-row">
           <span>
             © {new Date().getFullYear()} {profile.name}. {t("footer.rights")}
           </span>

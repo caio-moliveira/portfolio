@@ -106,6 +106,7 @@ export const socials = {
   githubUser: "caio-moliveira",
   youtube: "https://www.youtube.com/@JornadaDeDados",
   calendly: "https://calendly.com/moliveiracaio/30min",
+  jornada: "https://suajornadadedados.com.br/",
 };
 
 export type Metric = { value: string; label: Bi };
@@ -339,7 +340,7 @@ export const curatedProjects: Project[] = [
       pt: "Extensão da linha de análise de contas para o acompanhamento das prestações em exercício, com sinalização automática de pontos de atenção.",
       en: "Extends the account-analysis line to in-year accountability tracking, automatically flagging points of attention.",
     },
-    tags: ["Python", "LangGraph", "OpenAI", "Langchain", "React", "FastAPI", "Oracle", "PostgreSQL", "OCR"],
+    tags: ["Python", "LangGraph", "OpenAI", "Langchain", "React", "FastAPI", "Oracle", "OCR", "CAG"],
     accent: "blue",
   },
   {
@@ -353,7 +354,7 @@ export const curatedProjects: Project[] = [
       pt: "Solução de IA para triagem, classificação e apoio às manifestações da ouvidoria, acelerando o atendimento ao cidadão.",
       en: "AI solution for triage, classification and support of ombudsman submissions, speeding up citizen service.",
     },
-    tags: ["Python", "OpenAI", "Azure", "PostgreSQL"],
+    tags: ["Python", "FastAPI","Langgraph", "OpenAI", "Azure", "Oracle", "OCR", "CAG"],
     accent: "violet",
   },
 
@@ -369,7 +370,7 @@ export const curatedProjects: Project[] = [
       en: "AI consulting for NEGOTI, including development and presentation of a business-applied solution.",
     },
     url: "https://negoti-apresentacao.vercel.app/",
-    tags: ["Consultoria", "Produto de IA"],
+    tags: ["OpenAI", "Produto de IA", "Consultoria"],
     accent: "cyan",
   },
   {
@@ -382,7 +383,7 @@ export const curatedProjects: Project[] = [
       pt: "Consultoria para o time de desenvolvimento da Inttegra sobre o uso de ferramentas de IA no dia a dia da engenharia.",
       en: "Consulting for Inttegra's development team on using AI tools in day-to-day engineering.",
     },
-    tags: ["Consultoria", "AI tooling", "Dev productivity"],
+    tags: ["Claude Code", "GitHub Copilot", "Cursor", "MCP"],
     accent: "blue",
   },
   {
@@ -395,22 +396,89 @@ export const curatedProjects: Project[] = [
       pt: "Formação em Letramento em IA para a ASSCONTAS: capacito a equipe a entender e usar IA no dia a dia com segurança, autonomia e senso crítico.",
       en: "AI Literacy training for ASSCONTAS: I enable the team to understand and use AI day-to-day with confidence, autonomy and critical thinking.",
     },
-    tags: ["Letramento em IA", "Treinamento", "Capacitação"],
+    tags: ["ChatGPT", "Claude", "Gemini", "Letramento em IA"],
     accent: "violet",
   },
 ];
 
-/* ---------------- Featured GitHub repos (enriches the live API data) ---------------- */
-export type FeaturedRepo = { repo: string; label: Bi; accent?: "blue" | "cyan" | "violet" };
+/* ----------------------------------------------------------------------------
+   Featured GitHub repos — the ONLY personal repos shown on the site.
+   The API route filters live GitHub data down to exactly this allow-list, in
+   this order. Each entry carries its own description + tech stack so the cards
+   are consistent regardless of what GitHub returns.
+   ---------------------------------------------------------------------------- */
+export type FeaturedRepo = { repo: string; label: Bi; desc: Bi; tags: string[]; accent?: "blue" | "cyan" | "violet" };
 export const featuredRepos: FeaturedRepo[] = [
-  { repo: "workshop-ai-agent", label: { pt: "Workshop de Agentes de IA", en: "AI Agents Workshop" }, accent: "blue" },
-  { repo: "ai-engineer-roadmap", label: { pt: "Trilha de Engenheiro de IA", en: "AI Engineer Roadmap" }, accent: "cyan" },
-  { repo: "rag-project", label: { pt: "Projeto RAG completo", en: "Full RAG project" }, accent: "blue" },
-  { repo: "mcp-agents", label: { pt: "Agentes com MCP", en: "Agents with MCP" }, accent: "violet" },
-  { repo: "databricks-agent", label: { pt: "Agente no Databricks", en: "Databricks agent" }, accent: "cyan" },
-  { repo: "workshop-agent-harness", label: { pt: "Workshop Agent Harness", en: "Agent Harness workshop" }, accent: "blue" },
-  { repo: "ai-agent-service", label: { pt: "Agente text-to-SQL", en: "Text-to-SQL agent" }, accent: "cyan" },
-  { repo: "langgraph-agent", label: { pt: "Agente com LangGraph", en: "LangGraph agent" }, accent: "violet" },
+  {
+    repo: "workshop-agent-harness",
+    label: { pt: "Workshop Agent Harness", en: "Agent Harness workshop" },
+    desc: {
+      pt: "Material do workshop de Agent Harness: como construir o 'esqueleto' que sustenta agentes de IA confiáveis em produção.",
+      en: "Agent Harness workshop material: how to build the harness that keeps AI agents reliable in production.",
+    },
+    tags: ["Python", "FastAPI", "Docker", "TypeScript", "Agent Harness"],
+    accent: "blue",
+  },
+  {
+    repo: "ai-engineer-roadmap",
+    label: { pt: "Trilha de Engenheiro de IA", en: "AI Engineer Roadmap" },
+    desc: {
+      pt: "Trilha prática para se tornar Engenheiro de IA: LLMs, RAG, agentes e projetos do zero à produção.",
+      en: "A hands-on roadmap to become an AI Engineer: LLMs, RAG, agents and projects from zero to production.",
+    },
+    tags: ["Python", "RAG", "LangChain", "LLMs", "Agentes de IA"],
+    accent: "cyan",
+  },
+  {
+    repo: "rag-project",
+    label: { pt: "Projeto RAG completo", en: "Full RAG project" },
+    desc: {
+      pt: "Projeto RAG completo: ingestão de documentos, embeddings, busca vetorial e respostas fundamentadas com LLM.",
+      en: "Full RAG project: document ingestion, embeddings, vector search and LLM-grounded answers.",
+    },
+    tags: ["Python", "RAG", "LangChain", "Qdrant", "OpenAI"],
+    accent: "blue",
+  },
+  {
+    repo: "workshop-ai-agent",
+    label: { pt: "Workshop de Agentes de IA", en: "AI Agents Workshop" },
+    desc: {
+      pt: "Repositório do Workshop de Agentes de IA, com exemplos práticos em CrewAI, AutoGen, Agno e LangGraph.",
+      en: "AI Agents Workshop repository, with hands-on examples in CrewAI, AutoGen, Agno and LangGraph.",
+    },
+    tags: ["Python", "CrewAI", "LangGraph", "LangChain", "AutoGen"],
+    accent: "violet",
+  },
+  {
+    repo: "mcp-agents",
+    label: { pt: "Agentes com MCP", en: "Agents with MCP" },
+    desc: {
+      pt: "Agentes de IA usando o Model Context Protocol (MCP) para se conectar a ferramentas e fontes de dados externas.",
+      en: "AI agents using the Model Context Protocol (MCP) to connect to external tools and data sources.",
+    },
+    tags: ["Python", "MCP", "OpenAI", "Agentes de IA"],
+    accent: "cyan",
+  },
+  {
+    repo: "ai-agent-service",
+    label: { pt: "Agente text-to-SQL", en: "Text-to-SQL agent" },
+    desc: {
+      pt: "Agente text-to-SQL que se conecta ao seu banco, responde perguntas sobre os dados e gera a query correspondente.",
+      en: "Text-to-SQL agent that connects to your database, answers questions about the data and generates the matching query.",
+    },
+    tags: ["Python", "FastAPI", "SQL", "OpenAI", "Text-to-SQL"],
+    accent: "blue",
+  },
+  {
+    repo: "databricks-agent",
+    label: { pt: "Agente no Databricks", en: "Databricks agent" },
+    desc: {
+      pt: "Agente de IA no Databricks, integrando LLMs a notebooks e aos dados da plataforma.",
+      en: "AI agent on Databricks, integrating LLMs with the platform's notebooks and data.",
+    },
+    tags: ["Python", "Databricks", "Jupyter", "LangChain"],
+    accent: "cyan",
+  },
 ];
 
 /* ---------------- Skills ---------------- */
@@ -480,37 +548,50 @@ export const videos: Video[] = [
 ];
 
 /* ---------------- Content: courses & tracks (Jornada de Dados) ---------------- */
-export type Course = { id: string; title: Bi; desc: Bi; url: string; badge: Bi };
+export type Course = {
+  id: string;
+  title: Bi;
+  desc: Bi;
+  url: string;
+  badge: Bi;
+  repo?: string; // GitHub repo the highlights were pulled from
+  highlights?: Bi[]; // curated bullets that make the card worth reading
+};
 export const courses: Course[] = [
   {
     id: "trilha-ia",
     title: { pt: "Trilha de Engenharia de IA", en: "AI Engineering Track" },
     desc: {
-      pt: "Formação completa para virar Engenheiro de IA: LLMs, RAG, agentes e projetos reais.",
-      en: "A complete path to become an AI Engineer: LLMs, RAG, agents and real projects.",
+      pt: "5 blocos que transformam quem desenvolve software em arquiteto de sistemas de IA em produção — do funcionamento dos LLMs ao fine-tuning.",
+      en: "5 blocks that turn software developers into architects of production AI systems — from how LLMs work to fine-tuning.",
     },
     url: "https://suajornadadedados.com.br/trilhas/engenharia-de-ia",
     badge: { pt: "Trilha", en: "Track" },
+    repo: "ai-engineer-roadmap",
+    highlights: [
+      { pt: "Fundamentos: LLMs, Python moderno, FastAPI e bancos vetoriais", en: "Fundamentals: LLMs, modern Python, FastAPI and vector databases" },
+      { pt: "RAG: ingestão, embeddings, retrieval híbrido e avaliação com RAGAS", en: "RAG: ingestion, embeddings, hybrid retrieval and RAGAS evaluation" },
+      { pt: "Agentes: LangGraph, memória, tools/MCP e sistemas multi-agente", en: "Agents: LangGraph, memory, tools/MCP and multi-agent systems" },
+      { pt: "OCR: Hugging Face, vLLM e document intelligence local", en: "OCR: Hugging Face, vLLM and local document intelligence" },
+      { pt: "Fine-tuning: LoRA/QLoRA, datasets e deploy local com GGUF", en: "Fine-tuning: LoRA/QLoRA, datasets and local GGUF deploy" },
+    ],
   },
   {
     id: "agent-harness",
     title: { pt: "Workshop de Agent Harness", en: "Agent Harness Workshop" },
     desc: {
-      pt: "Construa o 'esqueleto' que sustenta agentes de IA confiáveis em produção.",
-      en: "Build the harness that makes AI agents reliable in production.",
+      pt: "Como organizar o que o Claude Code lê — rules, hooks, MCP, subagents e skills — antes da primeira linha de código, construindo um agente de vendas ao vivo.",
+      en: "How to organize what Claude Code reads — rules, hooks, MCP, subagents and skills — before the first line of code, building a sales agent live.",
     },
     url: "https://lp.suajornadadedados.com.br/agent-harness.html",
     badge: { pt: "Workshop", en: "Workshop" },
-  },
-  {
-    id: "plataforma",
-    title: { pt: "Plataforma Jornada de Dados", en: "Jornada de Dados Platform" },
-    desc: {
-      pt: "Cursos, workshops e comunidade para engenheiros de dados e IA.",
-      en: "Courses, workshops and community for data & AI engineers.",
-    },
-    url: "https://suajornadadedados.com.br/",
-    badge: { pt: "Plataforma", en: "Platform" },
+    repo: "workshop-agent-harness",
+    highlights: [
+      { pt: "Método: ideia → PRD → harness → issues → implementação medida", en: "Method: idea → PRD → harness → issues → measured implementation" },
+      { pt: "Harness do Claude Code: rules, hooks, MCP, subagents e skills", en: "Claude Code harness: rules, hooks, MCP, subagents and skills" },
+      { pt: "Projeto real: agente text-to-SQL (Postgres) + retrieval no Qdrant", en: "Real project: text-to-SQL agent (Postgres) + Qdrant retrieval" },
+      { pt: "Gate automático: ruff + mypy + pytest e revisor em janela fresca", en: "Automatic gate: ruff + mypy + pytest and a fresh-window reviewer" },
+    ],
   },
 ];
 
@@ -523,29 +604,120 @@ export const teaching = {
   } as Bi,
 };
 
+/* Everyday AI assistants covered in the AI Literacy training (name + brand icon key). */
+export type LiteracyTool = { name: string; tech: string; maker: Bi };
+export const literacyTools: LiteracyTool[] = [
+  { name: "ChatGPT", tech: "OpenAI", maker: { pt: "OpenAI", en: "OpenAI" } },
+  { name: "Claude", tech: "Claude", maker: { pt: "Anthropic", en: "Anthropic" } },
+  { name: "Gemini", tech: "Gemini", maker: { pt: "Google", en: "Google" } },
+  { name: "Copilot", tech: "Copilot", maker: { pt: "Microsoft", en: "Microsoft" } },
+];
+
+/* Plain-language glossary — the terms everyone should know to use AI day to day. */
+export type LiteracyTerm = { term: Bi; def: Bi };
+export const literacyTerms: LiteracyTerm[] = [
+  {
+    term: { pt: "LLM", en: "LLM" },
+    def: {
+      pt: "O modelo por trás dos assistentes: gera texto prevendo a próxima palavra a partir de bilhões de exemplos.",
+      en: "The model behind the assistants: it writes text by predicting the next word from billions of examples.",
+    },
+  },
+  {
+    term: { pt: "Prompt", en: "Prompt" },
+    def: {
+      pt: "A instrução que você dá à IA. Quanto mais claro o contexto e o objetivo, melhor a resposta.",
+      en: "The instruction you give the AI. The clearer the context and goal, the better the answer.",
+    },
+  },
+  {
+    term: { pt: "Token", en: "Token" },
+    def: {
+      pt: "Pedaços de palavra que o modelo lê e escreve. É a 'unidade' que define tamanho e custo de uma conversa.",
+      en: "Chunks of words the model reads and writes. It's the 'unit' that drives a chat's length and cost.",
+    },
+  },
+  {
+    term: { pt: "Janela de contexto", en: "Context window" },
+    def: {
+      pt: "Quanto a IA consegue 'lembrar' de uma vez. Passou do limite, ela começa a esquecer o começo da conversa.",
+      en: "How much the AI can 'hold' at once. Past the limit, it starts forgetting the start of the conversation.",
+    },
+  },
+  {
+    term: { pt: "Alucinação", en: "Hallucination" },
+    def: {
+      pt: "Quando a IA responde algo errado com total confiança. Por isso: sempre confira informações importantes.",
+      en: "When the AI answers something wrong with full confidence. That's why: always verify what matters.",
+    },
+  },
+  {
+    term: { pt: "RAG", en: "RAG" },
+    def: {
+      pt: "Conectar a IA aos seus documentos para ela responder com base neles, não só na memória do modelo.",
+      en: "Connecting the AI to your documents so it answers from them, not just from the model's memory.",
+    },
+  },
+  {
+    term: { pt: "Multimodal", en: "Multimodal" },
+    def: {
+      pt: "IA que entende além de texto: imagens, áudio, PDFs e planilhas na mesma conversa.",
+      en: "AI that understands beyond text: images, audio, PDFs and spreadsheets in the same chat.",
+    },
+  },
+  {
+    term: { pt: "Agente de IA", en: "AI agent" },
+    def: {
+      pt: "IA que não só responde, mas executa tarefas em etapas e usa ferramentas para chegar a um resultado.",
+      en: "AI that doesn't just answer, but carries out tasks step by step and uses tools to reach a result.",
+    },
+  },
+];
+
 /* ---------------- Consulting offer ---------------- */
 export const consultingOffer = {
   intro: {
-    pt: "Ajudo empresas e times a saírem da teoria e colocarem IA em produção, de agentes e RAG a estratégia e capacitação do time.",
-    en: "I help companies and teams move from theory to production AI, from agents and RAG to strategy and team enablement.",
+    pt: "Ajudo empresas e times a saírem da teoria e colocarem IA para trabalhar: construo agentes e RAG em produção, capacito times de desenvolvimento a programar com IA e treino equipes a usar IA no dia a dia e em automações.",
+    en: "I help companies and teams move from theory to putting AI to work: I build agents and RAG in production, enable development teams to code with AI, and train teams to use AI day to day and in automations.",
   } as Bi,
   services: [
     {
-      title: { pt: "Agentes & Automação", en: "Agents & Automation" },
-      desc: { pt: "Agentes de IA que executam tarefas reais e se conectam aos seus sistemas.", en: "AI agents that perform real tasks and connect to your systems." },
+      title: { pt: "Agentes, RAG & Automação", en: "Agents, RAG & Automation" },
+      desc: {
+        pt: "Projeto e coloco em produção agentes de IA, RAG e automações que executam tarefas reais e se conectam aos seus sistemas.",
+        en: "I design and ship AI agents, RAG and automations that perform real tasks and connect to your systems.",
+      },
       icon: "Bot",
+      tags: ["LangGraph", "MCP", "RAG", "FastAPI", "OpenAI"],
     },
     {
-      title: { pt: "RAG & Busca Inteligente", en: "RAG & Smart Search" },
-      desc: { pt: "Assistentes que conversam com a sua base de documentos.", en: "Assistants that talk to your document base." },
-      icon: "Search",
+      title: { pt: "Times de desenvolvimento", en: "Development teams" },
+      desc: {
+        pt: "Capacito seu time de dev a programar com IA — do Claude Code e Copilot ao agent harness que torna agentes confiáveis em produção.",
+        en: "I upskill your dev team to code with AI — from Claude Code and Copilot to the agent harness that makes agents reliable in production.",
+      },
+      icon: "Code2",
+      tags: ["Claude Code", "GitHub Copilot", "Cursor", "Agent Harness"],
     },
     {
-      title: { pt: "Estratégia & Capacitação", en: "Strategy & Enablement" },
-      desc: { pt: "Diagnóstico, roadmap de IA e treinamento do seu time.", en: "Assessment, AI roadmap and training for your team." },
+      title: { pt: "IA no dia a dia & automações", en: "Everyday AI & automations" },
+      desc: {
+        pt: "Treino equipes não técnicas a usar ChatGPT, Claude, Gemini e Copilot com autonomia e a automatizar tarefas repetitivas do dia a dia.",
+        en: "I train non-technical teams to use ChatGPT, Claude, Gemini and Copilot with autonomy and to automate repetitive daily tasks.",
+      },
+      icon: "Sparkles",
+      tags: ["ChatGPT", "Claude", "Gemini", "Automação"],
+    },
+    {
+      title: { pt: "Estratégia & Letramento em IA", en: "Strategy & AI Literacy" },
+      desc: {
+        pt: "Diagnóstico, roadmap de IA e Letramento para a organização adotar IA com estratégia, segurança e senso crítico.",
+        en: "Assessment, AI roadmap and AI Literacy so the organization adopts AI with strategy, safety and critical thinking.",
+      },
       icon: "Compass",
+      tags: ["Estratégia de IA", "Letramento em IA", "Discovery"],
     },
-  ] as { title: Bi; desc: Bi; icon: string }[],
+  ] as { title: Bi; desc: Bi; icon: string; tags: string[] }[],
 };
 
 /* =========================================================================
@@ -582,12 +754,20 @@ export function buildKnowledgeContext(lang: Lang): string {
 
   lines.push(`\n## Teaching & Content`);
   lines.push(`- ${L(teaching.title)}: ${L(teaching.desc)}`);
+  lines.push(`  Everyday AI tools covered: ${literacyTools.map((tl) => `${tl.name} (${L(tl.maker)})`).join(", ")}`);
+  lines.push(`  Fundamentals explained in plain language: ${literacyTerms.map((it) => L(it.term)).join(", ")}`);
   lines.push(`- YouTube channel (Jornada de Dados): ${socials.youtube}`);
-  courses.forEach((c) => lines.push(`- ${L(c.title)}: ${L(c.desc)} (${c.url})`));
+  courses.forEach((c) => {
+    lines.push(`- ${L(c.title)}: ${L(c.desc)} (${c.url})`);
+    c.highlights?.forEach((h) => lines.push(`  • ${L(h)}`));
+  });
 
   lines.push(`\n## Consulting`);
   lines.push(L(consultingOffer.intro));
-  consultingOffer.services.forEach((s) => lines.push(`- ${L(s.title)}: ${L(s.desc)}`));
+  consultingOffer.services.forEach((s) => lines.push(`- ${L(s.title)}: ${L(s.desc)} [${s.tags.join(", ")}]`));
+  curatedProjects
+    .filter((p) => p.category === "consulting")
+    .forEach((p) => lines.push(`  • Case ${p.name}: ${L(p.summary)} (${p.tags.join(", ")})`));
 
   return lines.join("\n");
 }

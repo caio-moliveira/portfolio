@@ -7,6 +7,8 @@ export type Repo = {
   stars: number;
   topics: string[];
   updatedAt: string;
+  /** Timestamp of the last push (used as "last commit" date). */
+  pushedAt: string;
 };
 
 /** Client helper: fetch curated repos from our own API route. */

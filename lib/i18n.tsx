@@ -42,6 +42,22 @@ const dict = {
   "proj.loading": { pt: "Carregando repositórios…", en: "Loading repositories…" },
   "proj.delivered": { pt: "Entregue", en: "Delivered" },
   "proj.inProgress": { pt: "Em progresso", en: "In progress" },
+  "proj.lastCommit": { pt: "Último commit", en: "Last commit" },
+  "proj.workingNow": { pt: "Trabalhando agora", en: "Working on now" },
+  "proj.workingNowDesc": {
+    pt: "Produtos de IA que estou construindo neste momento.",
+    en: "AI products I'm building right now.",
+  },
+  "proj.deliveredTitle": { pt: "Já entregues", en: "Delivered" },
+  "proj.deliveredDesc": {
+    pt: "Soluções em produção, gerando valor real.",
+    en: "Solutions in production, creating real value.",
+  },
+  "proj.personalTitle": { pt: "Projetos pessoais", en: "Personal projects" },
+  "proj.personalDesc": {
+    pt: "Experimentos e materiais abertos no meu GitHub.",
+    en: "Open experiments and materials on my GitHub.",
+  },
 
   "teach.title": { pt: "Ensino & Conteúdo", en: "Teaching & Content" },
   "teach.kicker": { pt: "Compartilhando conhecimento", en: "Sharing knowledge" },
@@ -49,9 +65,17 @@ const dict = {
   "teach.courses": { pt: "Cursos & Trilhas", en: "Courses & Tracks" },
   "teach.watch": { pt: "Assistir", en: "Watch" },
   "teach.access": { pt: "Acessar", en: "Access" },
+  "teach.tools": { pt: "Ferramentas do dia a dia", en: "Everyday AI tools" },
+  "teach.fundamentals": { pt: "Termos que todo mundo deveria saber", en: "Terms everyone should know" },
 
   "consult.title": { pt: "Consultoria em IA", en: "AI Consulting" },
   "consult.kicker": { pt: "Para empresas & times", en: "For companies & teams" },
+  "consult.how": { pt: "Como eu ajudo", en: "How I help" },
+  "consult.clients": { pt: "Clientes & Cases", en: "Clients & Cases" },
+  "consult.clientsDesc": {
+    pt: "Empresas e equipes que já colocaram IA para trabalhar comigo.",
+    en: "Companies and teams that have already put AI to work with me.",
+  },
 
   "skills.title": { pt: "Skills & Stack", en: "Skills & Stack" },
   "skills.kicker": { pt: "Ferramentas do ofício", en: "Tools of the craft" },
